@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import Remarkable from 'remarkable'
+
+import { LinearLayout } from 'react-bosonic/lib'
+
 import './App.css'
 
 class App extends Component {
@@ -24,8 +27,12 @@ class App extends Component {
         <div className="App-header">
           <h1>Logbook</h1>
         </div>
-        <div dangerouslySetInnerHTML={this.rawMarkup()} />
-        <textarea value={this.state.markdown} onChange={this.handleChange}/>
+        <div className="App-body">
+          <LinearLayout className="App-content" horizontal={true}>
+            <div className="expand" dangerouslySetInnerHTML={this.rawMarkup()} />
+            <textarea className="expand" value={this.state.markdown} onChange={this.handleChange}/>
+          </LinearLayout>
+        </div>
       </div>
     )
   }
